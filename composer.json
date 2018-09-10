@@ -1,0 +1,21 @@
+{
+  "name": "pccomponentes/criteria",
+  "description": "Helper classes for implement filter/criteria pattern",
+  "authors": [
+    {
+      "name": "Aaron Bernabeu Rodríguez",
+      "email": "aaron.bernabeu@pccomponentes.com"
+    }
+  ],
+  "license": "MIT",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Pccomponentes\\Criteria\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.2",
+    "pccomponentes/ddd": "~0.1"
+  }
+}
