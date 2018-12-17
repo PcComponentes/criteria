@@ -16,6 +16,6 @@
   },
   "require": {
     "php": "^7.2",
-    "pccomponentes/ddd": "~0.1"
+    "pccomponentes/ddd": "^1.1"
   }
 }
