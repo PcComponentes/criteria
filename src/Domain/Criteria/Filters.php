@@ -8,6 +8,6 @@ final class Filters extends CollectionValueObject
 {
     public function __construct(FilterInterface... $items)
     {
-        parent::__construct(...$items);
+        parent::__construct($items);
     }
 }
