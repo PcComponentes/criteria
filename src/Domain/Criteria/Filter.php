@@ -8,7 +8,7 @@ final class Filter implements FilterInterface
     private $operator;
     private $value;
 
-    public function __construct(FilterField $field, FilterOperator $operator, FilterValue $value)
+    public function __construct(FilterField $field, FilterOperator $operator, FilterValueInterface $value)
     {
         $this->field = $field;
         $this->operator = $operator;
@@ -25,7 +25,7 @@ final class Filter implements FilterInterface
         return $this->operator;
     }
 
-    public function value(): FilterValue
+    public function value(): FilterValueInterface
     {
         return $this->value;
     }

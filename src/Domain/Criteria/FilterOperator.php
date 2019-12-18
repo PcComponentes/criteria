@@ -10,4 +10,6 @@ final class FilterOperator extends EnumValueObject
     const GT       = '>';
     const LT       = '<';
     const CONTAINS = 'CONTAINS';
+    const IN = 'IN';
+    const NOT_IN = 'NOT IN';
 }
