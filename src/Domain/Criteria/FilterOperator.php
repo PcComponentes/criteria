@@ -2,7 +2,7 @@
 
 namespace Pccomponentes\Criteria\Domain\Criteria;
 
-use Pccomponentes\Ddd\Domain\Model\ValueObject\EnumValueObject;
+use PcComponentes\Ddd\Domain\Model\ValueObject\EnumValueObject;
 
 final class FilterOperator extends EnumValueObject
 {
