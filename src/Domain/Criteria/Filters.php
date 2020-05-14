@@ -2,7 +2,7 @@
 
 namespace Pccomponentes\Criteria\Domain\Criteria;
 
-use Pccomponentes\Ddd\Domain\Model\ValueObject\CollectionValueObject;
+use PcComponentes\Ddd\Domain\Model\ValueObject\CollectionValueObject;
 
 final class Filters extends CollectionValueObject
 {
