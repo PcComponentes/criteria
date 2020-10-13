@@ -7,7 +7,7 @@ abstract class LogicFilter implements FilterInterface
     private $left;
     private $right;
 
-    public function __construct(Filter $left, Filter $right)
+    public function __construct(FilterInterface $left, FilterInterface $right)
     {
         $this->left = $left;
         $this->right = $right;
