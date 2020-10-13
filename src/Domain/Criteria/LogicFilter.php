@@ -13,12 +13,12 @@ abstract class LogicFilter implements FilterInterface
         $this->right = $right;
     }
 
-    public function left(): Filter
+    public function left(): FilterInterface
     {
         return $this->left;
     }
 
-    public function right(): Filter
+    public function right(): FilterInterface
     {
         return $this->right;
     }
