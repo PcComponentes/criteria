@@ -2,7 +2,7 @@
 
 namespace Pccomponentes\Criteria\Domain\Criteria;
 
-final class Criteria
+class Criteria
 {
     private $filters;
     private $order;
