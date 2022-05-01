@@ -15,6 +15,11 @@ final class Filter implements FilterInterface
         $this->value = $value;
     }
 
+    public static function from(FilterField $field, FilterOperator $operator, FilterValueInterface $value): self
+    {
+        return new self($field, $operator, $value);
+    }
+
     public function field(): FilterField
     {
         return $this->field;

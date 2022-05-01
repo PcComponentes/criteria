@@ -17,6 +17,11 @@ class Criteria
         $this->limit = $limit;
     }
 
+    public static function from(Filters $filters, ?Order $order, ?int $offset, ?int $limit): self
+    {
+        return new self($filters, $order, $offset, $limit);
+    }
+
     public function hasFilters(): bool
     {
         return $this->filters->count() > 0;
