@@ -8,4 +8,14 @@ final class OrderType extends EnumValueObject
 {
     const ASC = 'asc';
     const DESC = 'desc';
+
+    public static function fromAsc(): self
+    {
+        return self::from(self::ASC);
+    }
+
+    public static function fromDesc(): self
+    {
+        return self::from(self::DESC);
+    }
 }
