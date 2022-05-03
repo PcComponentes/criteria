@@ -32,7 +32,7 @@ class Criteria
         $this->limit = $limit;
     }
 
-    public static function from(Filters $filters, Sorting $sorting, ?int $offset, ?int $limit): self
+    public static function from(Filters $filters, $sorting, ?int $offset, ?int $limit): self
     {
         return new self($filters, $sorting, $offset, $limit);
     }
