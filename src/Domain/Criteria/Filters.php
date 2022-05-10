@@ -10,7 +10,7 @@ final class Filters extends CollectionValueObject
     /**
      * @param FilterInterface[] $items
      */
-    public static function from(array $items): self
+    public static function from(array $items): static
     {
         Assert::that($items)->all()->isInstanceOf(FilterInterface::class);
 
