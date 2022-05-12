@@ -11,7 +11,7 @@ final class Sorting extends CollectionValueObject
     /**
      * @param Order[] $items
      */
-    public static function from(array $items): self
+    public static function from(array $items): static
     {
         Assert::that($items)->all()->isInstanceOf(Order::class);
 
