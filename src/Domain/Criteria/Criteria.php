@@ -5,21 +5,21 @@ namespace Pccomponentes\Criteria\Domain\Criteria;
 class Criteria
 {
     private $filters;
-    private $order;
+    private $sorting;
     private $offset;
     private $limit;
 
-    public function __construct(Filters $filters, ?Order $order, ?int $offset, ?int $limit)
+    public function __construct(Filters $filters, ?Sorting $sorting, ?int $offset, ?int $limit)
     {
         $this->filters = $filters;
-        $this->order = $order;
+        $this->sorting = $sorting ?? Sorting::create();
         $this->offset = $offset;
         $this->limit = $limit;
     }
 
-    public static function from(Filters $filters, ?Order $order, ?int $offset, ?int $limit): self
+    public static function from(Filters $filters, ?Sorting $sorting, ?int $offset, ?int $limit): self
     {
-        return new self($filters, $order, $offset, $limit);
+        return new self($filters, $sorting, $offset, $limit);
     }
 
     public function hasFilters(): bool
@@ -27,9 +27,9 @@ class Criteria
         return $this->filters->count() > 0;
     }
 
-    public function hasOrder()
+    public function hasSorting(): bool
     {
-        return null !== $this->order;
+        return false === $this->sorting->isEmpty();
     }
 
     public function filters(): Filters
@@ -37,9 +37,9 @@ class Criteria
         return $this->filters;
     }
 
-    public function order(): ?Order
+    public function sorting(): Sorting
     {
-        return $this->order;
+        return $this->sorting;
     }
 
     public function offset(): ?int
