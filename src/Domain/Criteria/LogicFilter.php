@@ -2,24 +2,23 @@
 
 namespace Pccomponentes\Criteria\Domain\Criteria;
 
-abstract class LogicFilter implements FilterInterface
+use Assert\Assert;
+use PcComponentes\Ddd\Domain\Model\ValueObject\CollectionValueObject;
+
+abstract class LogicFilter extends CollectionValueObject implements FilterInterface
 {
-    private $left;
-    private $right;
-
-    public function __construct(FilterInterface $left, FilterInterface $right)
+    /**
+     * @param FilterInterface[] $items
+     */
+    public static function from(array $items): self
     {
-        $this->left = $left;
-        $this->right = $right;
+        Assert::that($items)->all()->isInstanceOf(FilterInterface::class);
+
+        return parent::from($items);
     }
 
-    public function left(): FilterInterface
+    public static function create(FilterInterface...$items): self
     {
-        return $this->left;
-    }
-
-    public function right(): FilterInterface
-    {
-        return $this->right;
+        return static::from($items);
     }
 }
