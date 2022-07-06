@@ -13,6 +13,11 @@ final class Order
         $this->orderType = $orderType;
     }
 
+    public static function from(OrderBy $orderBy, OrderType $orderType): self
+    {
+        return new self($orderBy, $orderType);
+    }
+
     public function orderBy(): OrderBy
     {
         return $this->orderBy;
