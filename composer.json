@@ -15,8 +15,8 @@
     }
   },
   "require": {
-    "php": "^7.4 | ^8.0",
-    "pccomponentes/ddd": "^2.0",
+    "php": "^8.0",
+    "pccomponentes/ddd": "^3.0",
     "beberlei/assert": "^3.3"
   }
 }
