@@ -12,6 +12,7 @@ final class FilterOperator extends EnumValueObject
     const LT = '<';
     const LTE = 'LESS_THAN_OR_EQUAL';
     const CONTAINS = 'CONTAINS';
+    const CONTAINS_NON_SENSITIVE = 'CONTAINS_NON_SENSITIVE';
     const IN = 'IN';
     const NOT_IN = 'NOT IN';
     const NOT_EQUAL = 'NOT EQUAL';
