@@ -2,6 +2,9 @@
 
 namespace Pccomponentes\Criteria\Domain\Criteria;
 
+/**
+ * @deprecated use Pccomponentes\Criteria\Domain\Criteria/Logic/Filter instead
+ */
 abstract class LogicFilter implements FilterInterface
 {
     private $left;
