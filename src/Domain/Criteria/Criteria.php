@@ -5,10 +5,10 @@ namespace Pccomponentes\Criteria\Domain\Criteria;
 
 class Criteria
 {
-    private $filters;
-    private $sorting;
-    private $offset;
-    private $limit;
+    private Filters $filters;
+    private Sorting $sorting;
+    private ?int $offset;
+    private ?int $limit;
 
     public function __construct(Filters $filters, ?Sorting $sorting, ?int $offset, ?int $limit)
     {
@@ -18,7 +18,7 @@ class Criteria
         $this->limit = $limit;
     }
 
-    public static function from(Filters $filters, ?Sorting $sorting, ?int $offset, ?int $limit): self
+    public static function from(Filters $filters, ?Sorting $sorting = null, ?int $offset = null, ?int $limit = null): self
     {
         return new self($filters, $sorting, $offset, $limit);
     }
