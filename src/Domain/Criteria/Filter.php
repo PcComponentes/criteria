@@ -18,8 +18,16 @@ final class Filter implements FilterInterface
         $this->value = $value;
     }
 
-    public static function from(string $field, string $operator, string|int|array $value): self
+    public static function from(string $field, string $operator, string|int|array|null $value = null): self
     {
+        if (null === $value) {
+            return new self(
+                FilterField::from($field),
+                FilterOperator::from($operator),
+                FilterValue::from(''),
+            );
+        }
+
         if (\is_int($value)) {
             return new self(
                 FilterField::from($field),
@@ -67,10 +75,14 @@ final class Filter implements FilterInterface
     {
         $isArrayOperator = \in_array($operator->value(), [FilterOperator::IN, FilterOperator::NOT_IN], true);
 
-        if ($value instanceof FilterArrayValue) {
-            \assert($isArrayOperator, 'Operator must be IN or NOT IN for array values');
+        if ($value instanceof FilterArrayValue && false === $isArrayOperator) {
+            throw new \Exception('Operator must be IN or NOT IN for array values');
+        }
 
-            return;
+        $isNullOperator = \in_array($operator->value(), [FilterOperator::IS_NULL, FilterOperator::IS_NOT_NULL], true);
+
+        if ($isNullOperator && '' !== $value->value()) {
+            throw new \Exception('Null operator must not have a value, expected empty value');
         }
 
         \assert(false === $isArrayOperator, 'Operator must not be IN or NOT IN for non-array values');
