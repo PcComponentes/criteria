@@ -11,14 +11,36 @@ final class Filter implements FilterInterface
 
     public function __construct(FilterField $field, FilterOperator $operator, FilterValueInterface $value)
     {
+        self::assertConsistency($operator, $value);
+
         $this->field = $field;
         $this->operator = $operator;
         $this->value = $value;
     }
 
-    public static function from(FilterField $field, FilterOperator $operator, FilterValueInterface $value): self
+    public static function from(string $field, string $operator, string|int|array $value): self
     {
-        return new self($field, $operator, $value);
+        if (\is_int($value)) {
+            return new self(
+                FilterField::from($field),
+                FilterOperator::from($operator),
+                FilterIntValue::from($value)
+            );
+        }
+
+        if (\is_array($value)) {
+            return new self(
+                FilterField::from($field),
+                FilterOperator::from($operator),
+                FilterArrayValue::from($value)
+            );
+        }
+
+        return new self(
+            FilterField::from($field),
+            FilterOperator::from($operator),
+            FilterValue::from($value)
+        );
     }
 
     public function field(): FilterField
@@ -39,5 +61,17 @@ final class Filter implements FilterInterface
     public function accept(FilterVisitorInterface $visitor)
     {
         return $visitor->visitFilter($this);
+    }
+
+    private static function assertConsistency(FilterOperator $operator, FilterValueInterface $value): void
+    {
+        $isArrayOperator = \in_array($operator, [FilterOperator::IN, FilterOperator::NOT_IN], true);
+
+        if ($value instanceof FilterArrayValue) {
+            \assert($isArrayOperator, 'Operator must be IN or NOT IN for array values');
+            return;
+        }
+
+        \assert(false === $isArrayOperator, 'Operator must not be IN or NOT IN for non-array values');
     }
 }
