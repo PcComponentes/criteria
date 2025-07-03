@@ -16,9 +16,29 @@ final class Filter implements FilterInterface
         $this->value = $value;
     }
 
-    public static function from(FilterField $field, FilterOperator $operator, FilterValueInterface $value): self
+    public static function from(string $field, string $operator, string|int|array $value): self
     {
-        return new self($field, $operator, $value);
+        if (\is_int($value)) {
+            return new self(
+                FilterField::from($field),
+                FilterOperator::from($operator),
+                FilterIntValue::from($value)
+            );
+        }
+
+        if (\is_array($value)) {
+            return new self(
+                FilterField::from($field),
+                FilterOperator::from($operator),
+                FilterArrayValue::from($value)
+            );
+        }
+
+        return new self(
+            FilterField::from($field),
+            FilterOperator::from($operator),
+            FilterValue::from($value)
+        );
     }
 
     public function field(): FilterField
