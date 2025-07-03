@@ -11,6 +11,8 @@ final class Filter implements FilterInterface
 
     public function __construct(FilterField $field, FilterOperator $operator, FilterValueInterface $value)
     {
+        self::assertConsistency($operator, $value);
+
         $this->field = $field;
         $this->operator = $operator;
         $this->value = $value;
@@ -59,5 +61,17 @@ final class Filter implements FilterInterface
     public function accept(FilterVisitorInterface $visitor)
     {
         return $visitor->visitFilter($this);
+    }
+
+    private static function assertConsistency(FilterOperator $operator, FilterValueInterface $value): void
+    {
+        $isArrayOperator = \in_array($operator, [FilterOperator::IN, FilterOperator::NOT_IN], true);
+
+        if ($value instanceof FilterArrayValue) {
+            \assert($isArrayOperator, 'Operator must be IN or NOT IN for array values');
+            return;
+        }
+
+        \assert(false === $isArrayOperator, 'Operator must not be IN or NOT IN for non-array values');
     }
 }
