@@ -5,8 +5,8 @@ namespace Pccomponentes\Criteria\Domain\Criteria;
 
 final class Order
 {
-    private $orderBy;
-    private $orderType;
+    private OrderBy $orderBy;
+    private OrderType $orderType;
 
     public function __construct(OrderBy $orderBy, OrderType $orderType)
     {
@@ -14,9 +14,9 @@ final class Order
         $this->orderType = $orderType;
     }
 
-    public static function from(OrderBy $orderBy, OrderType $orderType): self
+    public static function from(string $orderBy, string $orderType): self
     {
-        return new self($orderBy, $orderType);
+        return new self(OrderBy::from($orderBy), OrderType::from($orderType));
     }
 
     public function orderBy(): OrderBy
