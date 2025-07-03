@@ -5,9 +5,9 @@ namespace Pccomponentes\Criteria\Domain\Criteria;
 
 final class Filter implements FilterInterface
 {
-    private $field;
-    private $operator;
-    private $value;
+    private FilterField $field;
+    private FilterOperator $operator;
+    private FilterValueInterface $value;
 
     public function __construct(FilterField $field, FilterOperator $operator, FilterValueInterface $value)
     {
@@ -24,7 +24,7 @@ final class Filter implements FilterInterface
             return new self(
                 FilterField::from($field),
                 FilterOperator::from($operator),
-                FilterIntValue::from($value)
+                FilterIntValue::from($value),
             );
         }
 
@@ -32,14 +32,14 @@ final class Filter implements FilterInterface
             return new self(
                 FilterField::from($field),
                 FilterOperator::from($operator),
-                FilterArrayValue::from($value)
+                FilterArrayValue::from($value),
             );
         }
 
         return new self(
             FilterField::from($field),
             FilterOperator::from($operator),
-            FilterValue::from($value)
+            FilterValue::from($value),
         );
     }
 
@@ -65,10 +65,11 @@ final class Filter implements FilterInterface
 
     private static function assertConsistency(FilterOperator $operator, FilterValueInterface $value): void
     {
-        $isArrayOperator = \in_array($operator, [FilterOperator::IN, FilterOperator::NOT_IN], true);
+        $isArrayOperator = \in_array($operator->value(), [FilterOperator::IN, FilterOperator::NOT_IN], true);
 
         if ($value instanceof FilterArrayValue) {
             \assert($isArrayOperator, 'Operator must be IN or NOT IN for array values');
+
             return;
         }
 
