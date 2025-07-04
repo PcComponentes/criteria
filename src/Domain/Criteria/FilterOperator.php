@@ -7,18 +7,18 @@ use PcComponentes\Ddd\Domain\Model\ValueObject\EnumValueObject;
 
 final class FilterOperator extends EnumValueObject
 {
-    public const EQUAL = '=';
-    public const GT = '>';
-    public const GTE = 'GREATER_THAN_OR_EQUAL';
-    public const LT = '<';
-    public const LTE = 'LESS_THAN_OR_EQUAL';
-    public const CONTAINS = 'CONTAINS';
-    public const CONTAINS_NON_SENSITIVE = 'CONTAINS_NON_SENSITIVE';
-    public const IN = 'IN';
-    public const NOT_IN = 'NOT IN';
-    public const NOT_EQUAL = 'NOT EQUAL';
-    public const IS_NULL = 'IS NULL';
-    public const IS_NOT_NULL = 'IS NOT NULL';
+    public const string EQUAL = '=';
+    public const string GT = '>';
+    public const string GTE = 'GREATER_THAN_OR_EQUAL';
+    public const string LT = '<';
+    public const string LTE = 'LESS_THAN_OR_EQUAL';
+    public const string CONTAINS = 'CONTAINS';
+    public const string CONTAINS_NON_SENSITIVE = 'CONTAINS_NON_SENSITIVE';
+    public const string IN = 'IN';
+    public const string NOT_IN = 'NOT IN';
+    public const string NOT_EQUAL = 'NOT EQUAL';
+    public const string IS_NULL = 'IS NULL';
+    public const string IS_NOT_NULL = 'IS NOT NULL';
 
     public static function fromEqual(): self
     {
@@ -48,6 +48,11 @@ final class FilterOperator extends EnumValueObject
     public static function fromContains(): self
     {
         return self::from(self::CONTAINS);
+    }
+
+    public static function fromContainsNonSensitive(): self
+    {
+        return self::from(self::CONTAINS_NON_SENSITIVE);
     }
 
     public static function fromIn(): self
