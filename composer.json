@@ -19,8 +19,16 @@
     }
   },
   "require": {
-    "php": "^8.0",
+    "php": "^8.4",
     "pccomponentes/ddd": "^3.0 || ^4.0",
     "beberlei/assert": "^3.3"
+  },
+  "require-dev": {
+    "pccomponentes/coding-standard": "^3.2"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   }
 }
