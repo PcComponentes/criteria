@@ -84,7 +84,5 @@ final class Filter implements FilterInterface
         if ($isNullOperator && '' !== $value->value()) {
             throw new \Exception('Null operator must not have a value, expected empty value');
         }
-
-        \assert(false === $isArrayOperator, 'Operator must not be IN or NOT IN for non-array values');
     }
 }
