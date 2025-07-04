@@ -3,15 +3,10 @@ declare(strict_types=1);
 
 namespace Pccomponentes\Criteria\Domain\Criteria;
 
-final class Order
+final readonly class Order
 {
-    private OrderBy $orderBy;
-    private OrderType $orderType;
-
-    public function __construct(OrderBy $orderBy, OrderType $orderType)
+    public function __construct(private OrderBy $orderBy, private OrderType $orderType)
     {
-        $this->orderBy = $orderBy;
-        $this->orderType = $orderType;
     }
 
     public static function from(string $orderBy, string $orderType): self

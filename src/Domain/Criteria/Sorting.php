@@ -8,18 +8,16 @@ use PcComponentes\Ddd\Domain\Model\ValueObject\CollectionValueObject;
 
 final class Sorting extends CollectionValueObject
 {
-    /**
-     * @param Order[] $items
-     */
+    public static function create(Order ...$items): self
+    {
+        return parent::from($items);
+    }
+
+    /** @param array<Order> $items */
     public static function from(array $items): static
     {
         Assert::that($items)->all()->isInstanceOf(Order::class);
 
-        return parent::from($items);
-    }
-
-    public static function create(Order...$items): self
-    {
         return parent::from($items);
     }
 }

@@ -3,19 +3,14 @@ declare(strict_types=1);
 
 namespace Pccomponentes\Criteria\Domain\Criteria;
 
-final class Filter implements FilterInterface
+final readonly class Filter implements FilterInterface
 {
-    private FilterField $field;
-    private FilterOperator $operator;
-    private FilterValueInterface $value;
-
-    public function __construct(FilterField $field, FilterOperator $operator, FilterValueInterface $value)
-    {
+    public function __construct(
+        private FilterField $field,
+        private FilterOperator $operator,
+        private FilterValueInterface $value,
+    ) {
         self::assertConsistency($operator, $value);
-
-        $this->field = $field;
-        $this->operator = $operator;
-        $this->value = $value;
     }
 
     public static function from(string $field, string $operator, string|int|array|null $value = null): self

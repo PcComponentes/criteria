@@ -9,7 +9,6 @@ use PcComponentes\Ddd\Domain\Model\ValueObject\CollectionValueObject;
 
 abstract class Filter extends CollectionValueObject implements FilterInterface
 {
-
     public static function from(array $items): static
     {
         Assert::that($items)->all()->isInstanceOf(FilterInterface::class);
@@ -17,7 +16,7 @@ abstract class Filter extends CollectionValueObject implements FilterInterface
         return parent::from($items);
     }
 
-    public static function create(FilterInterface...$items): static
+    public static function create(FilterInterface ...$items): static
     {
         return parent::from($items);
     }
