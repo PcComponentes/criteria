@@ -3,6 +3,10 @@
   "description": "Helper classes for implement filter/criteria pattern",
   "authors": [
     {
+      "name": "Cristian Almohalla Gómez",
+      "email": "cristian.almohalla@pccomponentes.com"
+    },
+    {
       "name": "Aaron Bernabeu Rodríguez",
       "email": "aaron.bernabeu@pccomponentes.com"
     }

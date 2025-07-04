@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Pccomponentes\Criteria\Domain\Criteria;
 
@@ -6,18 +7,18 @@ use PcComponentes\Ddd\Domain\Model\ValueObject\EnumValueObject;
 
 final class FilterOperator extends EnumValueObject
 {
-    const EQUAL = '=';
-    const GT = '>';
-    const GTE = 'GREATER_THAN_OR_EQUAL';
-    const LT = '<';
-    const LTE = 'LESS_THAN_OR_EQUAL';
-    const CONTAINS = 'CONTAINS';
-    const CONTAINS_NON_SENSITIVE = 'CONTAINS_NON_SENSITIVE';
-    const IN = 'IN';
-    const NOT_IN = 'NOT IN';
-    const NOT_EQUAL = 'NOT EQUAL';
-    const IS_NULL = 'IS NULL';
-    const IS_NOT_NULL = 'IS NOT NULL';
+    public const EQUAL = '=';
+    public const GT = '>';
+    public const GTE = 'GREATER_THAN_OR_EQUAL';
+    public const LT = '<';
+    public const LTE = 'LESS_THAN_OR_EQUAL';
+    public const CONTAINS = 'CONTAINS';
+    public const CONTAINS_NON_SENSITIVE = 'CONTAINS_NON_SENSITIVE';
+    public const IN = 'IN';
+    public const NOT_IN = 'NOT IN';
+    public const NOT_EQUAL = 'NOT EQUAL';
+    public const IS_NULL = 'IS NULL';
+    public const IS_NOT_NULL = 'IS NOT NULL';
 
     public static function fromEqual(): self
     {

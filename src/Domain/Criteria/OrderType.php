@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Pccomponentes\Criteria\Domain\Criteria;
 
@@ -6,8 +7,8 @@ use PcComponentes\Ddd\Domain\Model\ValueObject\EnumValueObject;
 
 final class OrderType extends EnumValueObject
 {
-    const ASC = 'asc';
-    const DESC = 'desc';
+    public const ASC = 'asc';
+    public const DESC = 'desc';
 
     public static function fromAsc(): self
     {
