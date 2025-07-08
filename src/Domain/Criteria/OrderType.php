@@ -7,8 +7,8 @@ use PcComponentes\Ddd\Domain\Model\ValueObject\EnumValueObject;
 
 final class OrderType extends EnumValueObject
 {
-    public const ASC = 'asc';
-    public const DESC = 'desc';
+    public const string ASC = 'asc';
+    public const string DESC = 'desc';
 
     public static function fromAsc(): self
     {
