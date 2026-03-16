@@ -6,6 +6,7 @@ namespace Pccomponentes\Criteria\Domain\Criteria;
 use Assert\Assert;
 use PcComponentes\Ddd\Domain\Model\ValueObject\CollectionValueObject;
 
+/** @extends CollectionValueObject<int, Order> */
 final class Sorting extends CollectionValueObject
 {
     public static function create(Order ...$items): self

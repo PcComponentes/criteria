@@ -7,6 +7,7 @@ use Assert\Assert;
 use Pccomponentes\Criteria\Domain\Criteria\FilterInterface;
 use PcComponentes\Ddd\Domain\Model\ValueObject\CollectionValueObject;
 
+/** @extends CollectionValueObject<int, FilterInterface> */
 abstract class Filter extends CollectionValueObject implements FilterInterface
 {
     public static function from(array $items): static
@@ -19,10 +20,5 @@ abstract class Filter extends CollectionValueObject implements FilterInterface
     public static function create(FilterInterface ...$items): static
     {
         return parent::from($items);
-    }
-
-    public function current(): FilterInterface
-    {
-        return parent::current();
     }
 }

@@ -5,6 +5,7 @@ namespace Pccomponentes\Criteria\Domain\Criteria;
 
 use PcComponentes\Ddd\Domain\Model\ValueObject\CollectionValueObject;
 
+/** @extends CollectionValueObject<int, mixed> */
 final class FilterArrayValue extends CollectionValueObject implements FilterValueInterface
 {
     public function value(): array

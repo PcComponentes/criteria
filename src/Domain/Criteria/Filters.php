@@ -6,6 +6,7 @@ namespace Pccomponentes\Criteria\Domain\Criteria;
 use Assert\Assert;
 use PcComponentes\Ddd\Domain\Model\ValueObject\CollectionValueObject;
 
+/** @extends CollectionValueObject<int, FilterInterface> */
 final class Filters extends CollectionValueObject
 {
     public static function create(FilterInterface ...$items): self
